@@ -1,25 +1,10 @@
-# README
+# Setting up project
+1. Clone repository
+2. bundle install
+3. rake db:create:all
+4. rake db:migrate
+5. rake db:seed
+6. rails s
+7. rackup private_pub.ru -s thin -E production
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 # messenger_app
