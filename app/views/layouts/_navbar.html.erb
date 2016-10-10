@@ -1,0 +1,28 @@
+<nav class="navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <% if signed_in? %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Hello, #{current_user.name}", root_path %></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user.is_admin? %>
+            <li><%= link_to "New User", new_user_path %></li>
+          <% end %>
+
+          <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, id: "destroy_session" %></li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Log In", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        </ul>
+      <% end %>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

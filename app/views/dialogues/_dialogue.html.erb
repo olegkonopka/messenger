@@ -1,0 +1,8 @@
+<li class="media">
+  <%= image_tag("http://placehold.it/47x47", class: "media-object pull-left")%>
+  <div class="media-body">
+    <%= link_to "", dialogue_path(dialogue), class: "conversation", "data-cid" => dialogue.id %>
+        <h4 class="media-heading"><%= link_to "#{dialogue_interlocutor(dialogue).name}",dialogue_path(dialogue), class: "conversation", "data-cid" => dialogue.id %></h4>
+        <p><%= dialogue.messages.last.nil? ? "No messages" : truncate(dialogue.messages.last.body, length: 45) %></p>
+  </div>
+</li>

@@ -1,0 +1,44 @@
+<div id="notifications">
+  <% if @notifications.any? %>
+    <h5>You have <%=pluralize(@notifications.count,"Message")%></h5>
+    <%= render @notifications %>
+  <% end %>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading"><h5>All Users</h5></div>
+  <table class="table">
+    <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Start Chat</th>
+  </tr>
+    <% @users.each_with_index do |user, index| %>
+      <tr>
+        <td><%= index+=1 %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to "Send Message", "", class: "btn btn-success btn-xs start-dialogue", "data-sender-id": current_user.id, "data-receiver-id": user.id %></td>
+        <% if current_user.is_admin? %>
+          <td><%= link_to "Edit", edit_user_path(user),class: "btn btn-success btn-xs" %></td>
+          <td><%= link_to "Delete", user_path(user), method: :delete, data:{confirm: "Are you sure?"},class: "btn btn-success btn-xs" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<br>
+<h2>
+  Message List
+  <%= link_to "Refresh","", id: "refresh_part", class: "btn btn-success btn-sm" %>
+</h2>
+<br>
+<div style="height: 400px; overflow-y: auto;">
+  <ul class="media-list">
+    <div id="dialogues">
+      <% if @dialogues.any? %>
+        <%= render @dialogues %>
+      <% end %>
+    </div>
+  </ul>
+</div>

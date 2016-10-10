@@ -1,0 +1,9 @@
+<div class="dropdown notification-dropdown">
+  <div class="btn btn-default dropdown-toggle{ type: 'button', id: 'dropdownMenu1', data: { toggle: 'dropdown' }, 'aria-haspopup': true, 'aria-expanded': true }"
+    <ul class="dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }">
+      <li class="dropdown-header text-center">Notifications</li>
+      <div><%=link_to "#{User.find(notification.notified_by_id).name}", "", id: "show-conversation", class: "conversation", "data-cid" => notification.dialogue_id, "data-notification-id" => notification.id %></div>
+      <div id="message_content"><%= truncate(Message.find(notification.message_id).body, length: 20) %></div>
+    </ul>
+  </div>
+</div>
